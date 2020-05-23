@@ -27,7 +27,7 @@ goNextState(Word, State, [[V0, C, V1]|Tail], FinalStates, K, Graph):-
     atom_concat(Word, C, NextWord),
     goNextState(Word, State, Tail, FinalStates, K, Graph).
     
-problem17(Word, State, Graph, FinalStates, K):-
+findWords(Word, State, Graph, FinalStates, K):-
     atom_length(Word, Length),
     (Length = K, member(State, FinalStates)) ->
         print(Word),
@@ -35,5 +35,5 @@ problem17(Word, State, Graph, FinalStates, K):-
     filterGraph(Graph, State, [], NextEdges),
     goNextState(Word, State, NextEdges, FinalStates, K, Graph).
     
-main :- problem17('', 0, [[0, 'a', 1], [0, 'b', 7], [0, 'c', 0], [1, 'a', 1], [1, 'b', 2], [1, 'c', 4], [2, 'a', 2], 
+main :- findWords('', 0, [[0, 'a', 1], [0, 'b', 7], [0, 'c', 0], [1, 'a', 1], [1, 'b', 2], [1, 'c', 4], [2, 'a', 2], 
 [2, 'c', 3], [3, 'b', 3], [3, 'c', 4], [4, 'b', 2], [5, 'c', 4], [6, 'a', 4], [6, 'b', 6], [6, 'c', 6]], [2, 3, 4], 2).
