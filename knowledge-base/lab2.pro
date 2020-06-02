@@ -16,13 +16,13 @@ goNextState(Word, State, [[V0, C, V1]], FinalStates, K, Graph):-
     atom_concat(Word, C, NextWord),
     atom_length(NextWord, Length),
     Length =< K ->
-        problem17(NextWord, V1, Graph, FinalStates, K);
+        findWords(NextWord, V1, Graph, FinalStates, K);
     !.
 goNextState(Word, State, [[V0, C, V1]|Tail], FinalStates, K, Graph):-
     atom_concat(Word, C, NextWord),
     atom_length(NextWord, Length),
     Length =< K ->
-        problem17(NextWord, V1, Graph, FinalStates, K),
+        findWords(NextWord, V1, Graph, FinalStates, K),
         goNextState(Word, State, Tail, FinalStates, K, Graph);
     atom_concat(Word, C, NextWord),
     goNextState(Word, State, Tail, FinalStates, K, Graph).
