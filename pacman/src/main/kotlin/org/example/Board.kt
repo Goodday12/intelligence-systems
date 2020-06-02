@@ -252,7 +252,9 @@ class Board(private val flag: Int = 0, private val uiSettings: UiSettings = UiSe
         algo = when (flag) {
             1 -> TraversingAlgoBfs()
             2 -> TraversingAlgoDfs()
-            else -> TraversingAlgoBfs()
+            3 -> TraversingAlgoAStar(Pair(pacmanX / uiSettings.BLOCK_SIZE, pacmanY / uiSettings.BLOCK_SIZE))
+            4 -> TraversingAlgoGready()
+            else -> throw IllegalArgumentException()
         }
         algo.runPacman(randomDestinyPosition, this)
 
